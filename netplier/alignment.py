@@ -91,10 +91,19 @@ class Alignment:
 
         assert self.mode in ["ginsi", "linsi", "einsi"], "the mafft mode should be ginsi, linsi, or einsi"
 
+        if self.mode == "ginsi":
+            mode_opt = "--globalpair"
+        elif self.mode == "linsi":
+            mode_opt = "--localpair"
+        elif self.mode == "einsi":
+            mode_opt = "--genafpair"
+
         if not self.multithread:
-            cmd = f"mafft-{self.mode} --inputorder --text --ep {self.ep} --quiet {self.filepath_input} > {self.filepath_output}"
+            cmd = f"mafft {mode_opt} --inputorder --text --ep {self.ep} --quiet {self.filepath_input} > {self.filepath_output}"
+            # cmd = f"mafft-{self.mode} --inputorder --text --ep {self.ep} --quiet {self.filepath_input} > {self.filepath_output}"
         else:
-            cmd = f"mafft-{self.mode} --thread -1 --inputorder --text --ep {self.ep} --quiet {self.filepath_input} > {self.filepath_output}"
+            cmd = f"mafft {mode_opt} --thread -1 --inputorder --text --ep {self.ep} --quiet {self.filepath_input} > {self.filepath_output}"
+            # cmd = f"mafft-{self.mode} --thread -1 --inputorder --text --ep {self.ep} --quiet {self.filepath_input} > {self.filepath_output}"
             #cmd = f"mafft-{self.mode} --thread {self.nthread} --threadtb {self.nthreadtb} --threadit {self.nthreadit} --inputorder --text --ep {self.ep} {self.filepath_input} > {self.filepath_output}"
         logging.debug("mafft cmd: {}".format(cmd))
         
