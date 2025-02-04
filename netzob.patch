@@ -1,4 +1,4 @@
---- ./.venv3.6/lib/python3.6/site-packages/netzob/Import/PCAPImporter/PCAPImporter_old.py	2025-02-04 23:17:08.046758942 +0900
+--- ./.venv3.6/lib/python3.6/site-packages/netzob/Import/PCAPImporter/PCAPImporter.py	2025-02-04 23:17:08.046758942 +0900
 +++ ./.venv3.6/lib/python3.6/site-packages/netzob/Import/PCAPImporter/PCAPImporter.py	2025-02-04 23:17:37.767808767 +0900
 @@ -40,8 +40,8 @@
  # import impacket.ImpactDecoder as Decoders
